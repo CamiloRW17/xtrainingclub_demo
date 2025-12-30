@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Importamos las fuentes desde Google */
+@font-face {
+    font-family: 'Monserrat';
+    src: url(./fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Varela';
+    src: url(./fonts/VarelaRound-Regular.ttf);
+}
+
+/* Configuración Básica */
+body {
+  font-family: 'Varela';
+}
+
+/* Clase personalizada para la tipografía de marca */
+.brand-font {
+  font-family: 'Monserrat';
+}
+
+/* Efecto de texto "hueco" (Outline) */
+.text-outline {
+  -webkit-text-stroke: 2px transparent;
+  background-clip: text;
+  -webkit-background-clip: text; 
+  /* Truco: Borde blanco, relleno transparente */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  color: transparent;
+}
+
+/* Animación de Zoom Lento para el Hero */
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 20s infinite alternate linear;
+}
