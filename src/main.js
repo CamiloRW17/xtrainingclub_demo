@@ -51,4 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', toggleMenu);
   });
 
+  // --- Lógica para animaciones al hacer Scroll (Intersection Observer) ---
+  
+  const observerOptions = {
+    root: null, // Observa el viewport
+    rootMargin: '0px',
+    threshold: 0.4 // Se activa cuando el 40% de la tarjeta es visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Si la tarjeta entra en pantalla
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      } else {
+        // (Opcional) Si sale de pantalla, le quitamos la clase para que se anime otra vez al volver
+        entry.target.classList.remove('active');
+      }
+    });
+  }, observerOptions);
+
+  // Seleccionamos todas las tarjetas y las empezamos a observar
+  document.querySelectorAll('.program-card').forEach(card => {
+    observer.observe(card);
+  });
 });
